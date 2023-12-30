@@ -4,7 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 # Load movie data from CSV file
-movies_df = pd.read_csv('movies.csv')
+file_path = "movies.csv"
+movies_df = pd.read_csv(file_path)
 
 # Check for and handle null values
 movies_df = movies_df.fillna('')  # Replace null values with an empty string
