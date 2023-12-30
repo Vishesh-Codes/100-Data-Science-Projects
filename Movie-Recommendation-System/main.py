@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 # Load movie data from CSV file
-file_path = "movies.csv"
+file_path = "https://github.com/Vishesh-Codes/100-Data-Science-Projects/blob/main/Movie-Recommendation-System/movies.csv"
 movies_df = pd.read_csv(file_path)
 
 # Check for and handle null values
@@ -22,7 +22,8 @@ cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 # Function to get movie recommendations
 def get_recommendations(title):
-    idx = movies_df.index[movies_df['title'] == title].tolist()[0]
+    # idx = movies_df.index[movies_df['title'] == title].tolist()[0]
+    idx = movies_df.index[movies_df['title'].str.lower() == title.lower()].tolist()[0]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     sim_scores = sim_scores[1:11]  # Exclude the input movie itself and get top 10
