@@ -4,8 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 # Load movie data from CSV file
-file_path = "https://github.com/Vishesh-Codes/100-Data-Science-Projects/blob/main/Movie-Recommendation-System/movies.csv"
-movies_df = pd.read_csv(file_path)
+movies_df = pd.read_csv('movies.csv')
 
 # Check for and handle null values
 movies_df = movies_df.fillna('')  # Replace null values with an empty string
@@ -22,8 +21,10 @@ cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 # Function to get movie recommendations
 def get_recommendations(title):
-    # idx = movies_df.index[movies_df['title'] == title].tolist()[0]
-    idx = movies_df.index[movies_df['title'].str.lower() == title.lower()].tolist()[0]
+    idx = movies_df.index[movies_df['title'].str.lower() == title.lower()].tolist()
+    if not idx:
+        return None  # Return None if the movie title is not found
+    idx = idx[0]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     sim_scores = sim_scores[1:11]  # Exclude the input movie itself and get top 10
@@ -41,6 +42,10 @@ if st.button("Get Recommendations"):
     # Get recommendations
     recommendations = get_recommendations(user_input)
 
-    # Display recommendations
-    st.subheader(f"Top 10 movie recommendations for {user_input}:")
-    st.write(recommendations)
+    if recommendations is not None:
+        # Display recommendations
+        st.subheader(f"Top 10 movie recommendations for {user_input}:")
+        st.write(recommendations)
+    else:
+        # Display message if movie not found
+        st.warning(f"Movie '{user_input}' not found. Please enter a valid movie name.")
