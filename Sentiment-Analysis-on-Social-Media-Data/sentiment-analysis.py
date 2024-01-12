@@ -22,7 +22,7 @@ def preprocess_text(text):
 # Load the example dataset
 data = pd.DataFrame({
     'text': ["good love like happy joyful excited lovely fantastic amazing excellent wonderful awesome great beautiful positive uplifting brilliant delightful vibrant success win triumph celebrate prosper blessed smile grateful pleasure satisfaction inspiring optimistic glorious radiant harmony praise kindness affection passionate compassionate elegant jubilant charming graceful fun victory splendid splendor exhilarating ecstatic fabulous heartwarming nice wow best", 
-    "bad hate dislike sad unhappy disappointed horrible terrible awful negative stressful difficult annoying frustrating displeased disgusting dreadful unpleasant miserable upset regret angry irritating offensive boring ugly unfortunate unfavorable hopeless lonely depressing gloomy sorrowful tiring weary troubled grim distressed disheartened insulting injured harmful furious discontent disagreeable repulsive unfortunate dismal dismaying repugnant harsh despair desperate not"],
+    "bad hate dislike sad unhappy disappointed horrible terrible awful negative stressful difficult annoying frustrating displeased disgusting dreadful unpleasant miserable upset regret angry irritating offensive boring ugly unfortunate unfavorable hopeless lonely depressing gloomy sorrowful tiring weary troubled grim distressed disheartened insulting injured harmful furious discontent disagreeable repulsive unfortunate dismal dismaying repugnant harsh despair desperate not don't"],
     'sentiment': ['positive', 'negative']
 })
 
