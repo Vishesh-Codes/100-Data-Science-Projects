@@ -3,36 +3,40 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-from sklearn.pipeline import make_pipeline
+from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from transformers import BertTokenizer, BertForSequenceClassification, AdamW
 from torch.utils.data import DataLoader, TensorDataset
 import torch
 from tqdm import tqdm
 import nltk
+from sklearn.preprocessing import LabelEncoder
 
 nltk.download('stopwords')
 nltk.download("punkt")
 
 # Load your dataset (replace 'your_dataset.csv' with the actual filename)
-df = pd.read_csv('https://raw.githubusercontent.com/Vishesh-Codes/100-Data-Science-Projects/main/Sentiment-Analysis-on-Social-Media-Data/sentimentdataset.csv')
+try:
+    df = pd.read_csv('https://raw.githubusercontent.com/Vishesh-Codes/100-Data-Science-Projects/main/Sentiment-Analysis-on-Social-Media-Data/sentimentdataset.csv')
+except Exception as e:
+    st.error(f"Error loading the dataset: {e}")
 
 # Sample: Assuming your dataset has 'text' and 'label' columns
 X = df['text']
 y = df['sentiment']
 
+# Encode labels using LabelEncoder
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
 # Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
 # Define a function for text preprocessing
 def preprocess_text(text):
-    stop_words = set(stopwords.words('english'))
-    ps = PorterStemmer()
-    tokens = word_tokenize(text)
+    stop_words = set(nltk.corpus.stopwords.words('english'))
+    ps = nltk.PorterStemmer()
+    tokens = nltk.word_tokenize(text)
     tokens = [ps.stem(token) for token in tokens if token.isalpha() and token.lower() not in stop_words]
     return ' '.join(tokens)
 
@@ -58,11 +62,11 @@ bert_model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
 
 # Tokenize and encode the training set
 X_train_tokens = tokenizer(X_train.tolist(), padding=True, truncation=True, return_tensors='pt')
-y_train_tensor = torch.tensor(y_train.values)
+y_train_tensor = torch.tensor(y_train)
 
 # Tokenize and encode the test set
 X_test_tokens = tokenizer(X_test.tolist(), padding=True, truncation=True, return_tensors='pt')
-y_test_tensor = torch.tensor(y_test.values)
+y_test_tensor = torch.tensor(y_test)
 
 # Define a DataLoader for training
 train_dataset = TensorDataset(X_train_tokens['input_ids'], X_train_tokens['attention_mask'], y_train_tensor)
@@ -106,7 +110,7 @@ X_tfidf = tfidf_vectorizer.transform(X)
 
 # Train a Random Forest classifier
 random_forest_model = RandomForestClassifier(n_estimators=100, random_state=42)
-random_forest_model.fit(X_tfidf, y)
+random_forest_model.fit(X_tfidf, y_encoded)
 
 # Make predictions on the test set
 y_pred_rf = random_forest_model.predict(tfidf_vectorizer.transform(X_test))
@@ -136,12 +140,12 @@ if user_input:
         bert_prediction = torch.argmax(bert_output.logits, dim=1).item()
 
     # Random Forest Model Prediction
-    rf_prediction = random_forest_model.predict(tfidf_vectorizer.transform([user_input_processed]))[0]
+    rf_prediction = label_encoder.inverse_transform(random_forest_model.predict(tfidf_vectorizer.transform([user_input_processed])))[0]
 
     # Display Predictions
     st.header("Predictions:")
-    st.write(f"Logistic Regression Model Prediction: {lr_prediction}")
-    st.write(f"BERT Model Prediction: {bert_prediction}")
+    st.write(f"Logistic Regression Model Prediction: {label_encoder.inverse_transform([lr_prediction])[0]}")
+    st.write(f"BERT Model Prediction: {label_encoder.inverse_transform([bert_prediction])[0]}")
     st.write(f"Random Forest Model Prediction: {rf_prediction}")
 
 # Display Model Accuracy
