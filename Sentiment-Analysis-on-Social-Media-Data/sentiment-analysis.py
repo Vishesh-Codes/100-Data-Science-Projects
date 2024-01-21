@@ -13,6 +13,9 @@ from transformers import BertTokenizer, BertForSequenceClassification, AdamW
 from torch.utils.data import DataLoader, TensorDataset
 import torch
 from tqdm import tqdm
+import nltk
+
+nltk.download('stopwords')
 
 # Load your dataset (replace 'your_dataset.csv' with the actual filename)
 df = pd.read_csv('https://raw.githubusercontent.com/Vishesh-Codes/100-Data-Science-Projects/main/Sentiment-Analysis-on-Social-Media-Data/sentimentdataset.csv')
