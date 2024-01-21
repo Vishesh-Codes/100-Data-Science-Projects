@@ -1,7 +1,7 @@
 text,sentiment
  Enjoying a beautiful day at the park!              , Positive  
  Traffic was terrible this morning.                 , Negative  
- Just finished an amazing workout! 💪               , Positive  
+ Just finished an amazing workout!               , Positive  
  Excited about the upcoming weekend getaway!        , Positive  
  Trying out a new recipe for dinner tonight.        , Neutral   
  Feeling grateful for the little things in life.    , Positive  
@@ -12,10 +12,10 @@ text,sentiment
  Just published a new blog post. Check it out!      , Positive  
  Feeling a bit under the weather today.             , Negative  
  Exploring the city's hidden gems.                  , Positive  
-" New year, new fitness goals! 💪                    ", Positive  
+" New year, new fitness goals!                     ", Positive  
  Technology is changing the way we live.            , Neutral   
  Reflecting on the past and looking ahead.          , Positive  
- Just adopted a cute furry friend! 🐾              , Positive  
+ Just adopted a cute furry friend!               , Positive  
  Late-night gaming session with friends.            , Positive  
  Attending a virtual conference on AI.              , Neutral   
  Winter blues got me feeling low.                   , Negative  
@@ -23,12 +23,12 @@ text,sentiment
  Exploring the world of virtual reality.            , Positive  
  Productive day ticking off my to-do list.          , Positive  
  Just finished a challenging workout routine.       , Positive  
- Celebrating a milestone at work! 🎉               , Positive  
+ Celebrating a milestone at work!                , Positive  
  Sunday brunch with friends.                        , Positive  
  Learning a new language for personal growth.       , Positive  
  Quiet evening with a good book.                    , Positive  
  Reflecting on the importance of mental health.     , Positive  
- New painting in progress! 🎨                       , Positive  
+ New painting in progress!                        , Positive  
  Weekend road trip to explore scenic views.         , Positive  
  Enjoying a cup of tea and watching the sunset.     , Positive  
  Coding a new project with enthusiasm.              , Positive  
@@ -40,7 +40,7 @@ text,sentiment
  Trying out a new dessert recipe.                   , Positive  
  Excited about the upcoming gaming tournament.      , Positive  
  Planning a garden makeover for spring.             , Positive  
- Celebrating a friend's birthday tonight! 🎂       , Positive  
+ Celebrating a friend's birthday tonight!        , Positive  
  Feeling accomplished after a productive day.       , Positive  
  A cozy evening with a good movie.                 , Positive  
  Exploring local art galleries this weekend.        , Positive  
@@ -49,7 +49,7 @@ text,sentiment
  Reflecting on the beauty of nature.                , Positive  
  Cooking a special dinner for loved ones.           , Positive  
  Feeling optimistic about the week ahead.           , Positive  
- Starting a new fitness challenge tomorrow! 💪     , Positive  
+ Starting a new fitness challenge tomorrow!      , Positive  
  Sunday bike ride through scenic trails.           , Positive  
  Can't believe the injustice happening in our society., Anger        
  Feeling a sense of fear after watching a thriller movie. , Fear         
@@ -57,7 +57,7 @@ text,sentiment
  The state of the world's environment is just disgusting. , Disgust      
  Pure happiness: celebrating a loved one's achievement! , Happiness    
  Laughter is the best medicine—enjoying a comedy show. , Joy          
- Sharing love and positive vibes with everyone! ❤️      , Love         
+ Sharing love and positive vibes with everyone!       , Love         
  An amusing incident brightened up my day!               , Amusement    
  Enjoying a quiet evening with a book and some tea.      , Enjoyment    
  Admiring the beauty of nature during a peaceful hike.   , Admiration   
@@ -66,7 +66,7 @@ text,sentiment
  Disappointed with the service at a local restaurant.    , Disappointed 
  A surprise gift from a friend made my day!              , Surprise     
  Finding acceptance in the midst of life's challenges.   , Acceptance   
- Overflowing with adoration for my adorable pet! 🐾      , Adoration    
+ Overflowing with adoration for my adorable pet!       , Adoration    
  Anticipating a thrilling adventure in the coming weeks. , Anticipation 
  A bitter experience turned into a valuable lesson.      , Bitter       
  Finding calmness in the midst of a busy day.            , Calmness     
@@ -81,7 +81,7 @@ text,sentiment
  The state of corruption in our society is utterly disgusting. , Disgust      
  Overflowing happiness: welcoming a new family member!  , Happiness    
  Laughter is the key to joy—attending a stand-up comedy show. , Joy          
- Sending love to all my followers on this beautiful day! ❤️ , Love         
+ Sending love to all my followers on this beautiful day!  , Love         
  Amused by the antics of my pet—it's pure amusement!      , Amusement    
  Enjoying every moment of this trip—pure enjoyment!      , Enjoyment    
  Admiring the dedication of volunteers at a local charity. , Admiration   
@@ -90,7 +90,7 @@ text,sentiment
  Disappointed with the lack of progress in a personal project. , Disappointed 
  A surprise visit from an old friend brought tears of joy. , Surprise     
  Embracing acceptance of life's ups and downs.           , Acceptance   
- Overflowing adoration for a cute rescue puppy! 🐶       , Adoration    
+ Overflowing adoration for a cute rescue puppy!       , Adoration    
  Anticipating the release of a much-awaited movie.       , Anticipation 
  Bitter experience at the customer service department.   , Bitter       
  Finding calmness amidst the chaos of daily life.        , Calmness     
